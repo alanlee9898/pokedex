@@ -1,7 +1,7 @@
 import Layout from '../components/Layout'
 import Link from 'next/link'
 import { useState } from "react";
-
+import Img from 'next/image';
 
 export default function Home(props) {
     const {pokemon} = props;
@@ -11,20 +11,6 @@ export default function Home(props) {
         });
     const displayPokemon =
     pokemon.length > 0 && !searchValue ? pokemon : filteredPokemon
-
-    // const handleSearch = (event) => {
-      
-    //     let value = event.target.value.toLowerCase();
-
-    //     console.log(value)
-    //     let result = [];
-    //     result = pokemon.filter((data) => {
-           
-    //     return data.name.search(value) != -1;
-    //     });
-        
-    //     console.log(result)
-    //     }
 
   return (
     <Layout title="NextJS PokeDex">
@@ -43,10 +29,12 @@ export default function Home(props) {
                     <li key={index}>
                         <Link href={`/pokemon/${index + 1}`}>
                             <a className="border p-4 border-grey my-2 hover:shadow-md capitalize flex items-center text-lg bg-gray-200 rounded-md sm:mx-4">
-                                <img
+                                <Img
                                     src={item.image}
                                     alt={item.name}
                                     className="w-20 h-20 mr-3"
+                                    width={100}
+                                    height={100}
                                 />
                                 <span className="mr-2 font-bold">
                                     {index + 1}.
